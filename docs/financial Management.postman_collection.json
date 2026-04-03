@@ -1,0 +1,427 @@
+{
+  "info": {
+    "_postman_id": "29cc1541-7663-400b-b0ae-85df1c1de79d",
+    "name": "financial Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "46886241",
+    "_collection_link": "https://go.postman.co/collection/46886241-29cc1541-7663-400b-b0ae-85df1c1de79d?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{finanncialurl}}healthcheck",
+          "host": [
+            "{{finanncialurl}}healthcheck"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "{{finanncialurl}}users/register",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"jas72609@gmail.com\",\r\n  \"password\": \"1234567\",\r\n  \"displayName\": \"jas\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{finanncialurl}}users/register",
+          "host": [
+            "{{finanncialurl}}users"
+          ],
+          "path": [
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "{{finanncialurl}}users/login",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\":\"test@example.com\",\r\n  \"password\": \"123456\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{finanncialurl}}users/login",
+          "host": [
+            "{{finanncialurl}}users"
+          ],
+          "path": [
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "{{finanncialurl}}users/me",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM0NDhiYWVhLWNjYmQtNDA4YS1iM2M3LWQxYTZjMzRhMGZmMiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc3NTIzMzAzNSwiZXhwIjoxNzc1MzE5NDM1fQ.DENJVdEHNU11u_pWXF70oeSj7Wr_OPwEZ2lmLs1rgew",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{finanncialurl}}users/me",
+          "host": [
+            "{{finanncialurl}}users"
+          ],
+          "path": [
+            "me"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "{{finanncialurl}}users/update",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ3MzU5ODFmLTM1OWItNDhiNy04M2IxLWE0MDlhMzFhYjA3OCIsInJvbGUiOiJWSUVXRVIiLCJpYXQiOjE3NzUyMjQ2NjMsImV4cCI6MTc3NTMxMTA2M30.JEFDQLmcs1AqYqS6Y-unDbFF6bYrjPKXAUcbJWflEgc",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"displayName\":\"viewUser1\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{finanncialurl}}users/update",
+          "host": [
+            "{{finanncialurl}}users"
+          ],
+          "path": [
+            "update"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "{{finanncialurl}}records",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM0NDhiYWVhLWNjYmQtNDA4YS1iM2M3LWQxYTZjMzRhMGZmMiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc3NTIzMzAzNSwiZXhwIjoxNzc1MzE5NDM1fQ.DENJVdEHNU11u_pWXF70oeSj7Wr_OPwEZ2lmLs1rgew",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"amount\": 2500,\r\n  \"type\": \"TRANSFER\",\r\n  \"fromAccountId\": \"59264377-8a93-4c60-bc7e-33e6d0b7d3bb\",\r\n  \"toAccountId\": \"3c2dbb4c-567c-4b98-a026-bee27e28e166\",\r\n  \"category\": \"checking to savings\",\r\n  \"accountId\":\"3c2dbb4c-567c-4b98-a026-bee27e28e166\",\r\n  \"notes\":\"test\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{finanncialurl}}records",
+          "host": [
+            "{{finanncialurl}}records"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "{{finanncialurl}}accounts",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM0NDhiYWVhLWNjYmQtNDA4YS1iM2M3LWQxYTZjMzRhMGZmMiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc3NTIzMzAzNSwiZXhwIjoxNzc1MzE5NDM1fQ.DENJVdEHNU11u_pWXF70oeSj7Wr_OPwEZ2lmLs1rgew",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Savings Account\",\r\n  \"type\": \"checking\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{finanncialurl}}accounts",
+          "host": [
+            "{{finanncialurl}}accounts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "{{finanncialurl}}accounts",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM0NDhiYWVhLWNjYmQtNDA4YS1iM2M3LWQxYTZjMzRhMGZmMiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc3NTIzMzAzNSwiZXhwIjoxNzc1MzE5NDM1fQ.DENJVdEHNU11u_pWXF70oeSj7Wr_OPwEZ2lmLs1rgew",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{finanncialurl}}accounts",
+          "host": [
+            "{{finanncialurl}}accounts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "{{finanncialurl}}dashboard/summary",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM0NDhiYWVhLWNjYmQtNDA4YS1iM2M3LWQxYTZjMzRhMGZmMiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc3NTIzMzAzNSwiZXhwIjoxNzc1MzE5NDM1fQ.DENJVdEHNU11u_pWXF70oeSj7Wr_OPwEZ2lmLs1rgew",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{finanncialurl}}dashboard/summary",
+          "host": [
+            "{{finanncialurl}}dashboard"
+          ],
+          "path": [
+            "summary"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "{{finanncialurl}}dashboard/categories",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ3MzU5ODFmLTM1OWItNDhiNy04M2IxLWE0MDlhMzFhYjA3OCIsInJvbGUiOiJWSUVXRVIiLCJpYXQiOjE3NzUyMzUwNTUsImV4cCI6MTc3NTMyMTQ1NX0.x8yyj95oCldyJpBjVipbnckMWA-Zin802TgyJ14dQh0",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{finanncialurl}}dashboard/categories?from=2026-04-03",
+          "host": [
+            "{{finanncialurl}}dashboard"
+          ],
+          "path": [
+            "categories"
+          ],
+          "query": [
+            {
+              "key": "from",
+              "value": "2026-04-03"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "{{finanncialurl}}dashboard/recent",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM0NDhiYWVhLWNjYmQtNDA4YS1iM2M3LWQxYTZjMzRhMGZmMiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc3NTIzMzAzNSwiZXhwIjoxNzc1MzE5NDM1fQ.DENJVdEHNU11u_pWXF70oeSj7Wr_OPwEZ2lmLs1rgew",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{finanncialurl}}dashboard/recent?page=1&limit=10",
+          "host": [
+            "{{finanncialurl}}dashboard"
+          ],
+          "path": [
+            "recent"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "{{finanncialurl}}dashboard/trends",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM0NDhiYWVhLWNjYmQtNDA4YS1iM2M3LWQxYTZjMzRhMGZmMiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc3NTIzMzAzNSwiZXhwIjoxNzc1MzE5NDM1fQ.DENJVdEHNU11u_pWXF70oeSj7Wr_OPwEZ2lmLs1rgew",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{finanncialurl}}dashboard/trends",
+          "host": [
+            "{{finanncialurl}}dashboard"
+          ],
+          "path": [
+            "trends"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "{{finanncialurl}}records/a19e6c5a-c9fa-4a91-9f80-f166b734b81d",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM0NDhiYWVhLWNjYmQtNDA4YS1iM2M3LWQxYTZjMzRhMGZmMiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc3NTIzMzAzNSwiZXhwIjoxNzc1MzE5NDM1fQ.DENJVdEHNU11u_pWXF70oeSj7Wr_OPwEZ2lmLs1rgew",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"id\":\"6792eddb-d428-4f94-a0e2-3309e33ba5b2\",\r\n}"
+        },
+        "url": {
+          "raw": "{{finanncialurl}}records/a19e6c5a-c9fa-4a91-9f80-f166b734b81d",
+          "host": [
+            "{{finanncialurl}}records"
+          ],
+          "path": [
+            "a19e6c5a-c9fa-4a91-9f80-f166b734b81d"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "{{finanncialurl}}records",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ3MzU5ODFmLTM1OWItNDhiNy04M2IxLWE0MDlhMzFhYjA3OCIsInJvbGUiOiJWSUVXRVIiLCJpYXQiOjE3NzUyMzUwNTUsImV4cCI6MTc3NTMyMTQ1NX0.x8yyj95oCldyJpBjVipbnckMWA-Zin802TgyJ14dQh0",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{finanncialurl}}records",
+          "host": [
+            "{{finanncialurl}}records"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

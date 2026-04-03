@@ -1,0 +1,95 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+// ENUMS
+enum TransactionType {
+  INCOME
+  EXPENSE
+  TRANSFER
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+}
+
+// MODELS
+
+model User {
+  id           String     @id @default(uuid())
+  email        String     @unique
+  password     String
+  displayName  String
+  status       UserStatus @default(ACTIVE)
+  roleId       String
+  role         Role       @relation(fields: [roleId], references: [id])
+  accounts     Account[]
+  records      FinancialRecord[]
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  deletedAt    DateTime?
+
+  @@map("users")
+}
+
+model Role {
+  id                    String  @id @default(uuid())
+  name                  String  @unique
+  description           String
+  canCreateRecords      Boolean @default(false)
+  canReadRecords        Boolean @default(true)
+  canUpdateRecords      Boolean @default(false)
+  canDeleteRecords      Boolean @default(false)
+  canAccessDashboard    Boolean @default(true)
+  canManageUsers        Boolean @default(false)
+  users                 User[]
+
+  @@map("roles")
+}
+
+model Account {
+  id        String   @id @default(uuid())
+  name      String
+  type      String
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  records           FinancialRecord[] @relation("AccountRecords")
+  transfersFrom     FinancialRecord[] @relation("FromAccount")
+  transfersTo       FinancialRecord[] @relation("ToAccount")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("accounts")
+}
+
+model FinancialRecord {
+  id          String           @id @default(uuid())
+  amount      Decimal
+  type        TransactionType
+  category    String
+  date        DateTime
+  notes       String?
+  userId      String
+  user        User             @relation(fields: [userId], references: [id])
+  accountId   String
+  account     Account          @relation("AccountRecords", fields: [accountId], references: [id])
+  fromAccountId String?
+  fromAccount   Account?       @relation("FromAccount", fields: [fromAccountId], references: [id])
+  toAccountId   String?
+  toAccount     Account?       @relation("ToAccount", fields: [toAccountId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  deletedAt   DateTime?
+
+  @@map("financial_records")
+}

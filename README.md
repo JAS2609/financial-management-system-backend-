@@ -305,7 +305,7 @@ npx prisma migrate dev
 ```
 
 ```bash
-npx prisma db seed
+node prisma/seed.js
 ```
 
 ```bash
